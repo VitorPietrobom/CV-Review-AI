@@ -13,7 +13,6 @@ class pdf_processor_gui(QWidget):
 
         main_layout = QHBoxLayout()
 
-        # Vertical layout for PDF viewer and extracted text
         pdf_layout = QVBoxLayout()
 
         self.upload_label = QLabel('Upload PDF:')
@@ -32,7 +31,6 @@ class pdf_processor_gui(QWidget):
 
         main_layout.addLayout(pdf_layout)
 
-        # Vertical layout for extracted text title and text
         extracted_text_layout = QVBoxLayout()
 
         self.extracted_text_title = QLabel('Extracted Text:')
