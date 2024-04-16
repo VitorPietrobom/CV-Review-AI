@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QFileDialog, QScrollArea
 from PyQt5.QtGui import QImage, QPixmap
 import fitz  # PyMuPDF
+from rag import get_cv_feedback
 
 class pdf_processor_gui(QWidget):
     def __init__(self):
@@ -32,6 +33,12 @@ class pdf_processor_gui(QWidget):
         main_layout.addLayout(pdf_layout)
 
         extracted_text_layout = QVBoxLayout()
+
+        self.feedback_label = QLabel('Feedback:')
+        extracted_text_layout.addWidget(self.feedback_label)
+
+        self.feedback_text = QLabel()  # This will display the feedback
+        extracted_text_layout.addWidget(self.feedback_text)
 
         self.extracted_text_title = QLabel('Extracted Text:')
         extracted_text_layout.addWidget(self.extracted_text_title)
@@ -75,4 +82,7 @@ class pdf_processor_gui(QWidget):
 
     def processPDF(self):
         print("Processing PDF...")
+        feedback = get_cv_feedback(self.extracted_text.text())
+        print(feedback)
+        self.feedback_text.setText(feedback) 
         
